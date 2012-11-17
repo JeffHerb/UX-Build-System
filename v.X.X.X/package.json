@@ -1,0 +1,10 @@
+{
+  "name": "ux-build-system",
+  "version": "0.0.2",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  }
+}

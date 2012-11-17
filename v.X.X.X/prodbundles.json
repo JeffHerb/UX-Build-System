@@ -1,0 +1,83 @@
+{
+	"ux-script": {
+		"type": "standard",
+		"description": "combindes all of the different core ux-scripts",
+		"mode": {
+			"dev": {
+				"js": [{
+					"concat": {
+						"files":["browserDetect","lazyloader","jquery","ux-object","dev-default"],
+						"output": "ux-script.js"
+					}
+				}]
+			},
+			"prod":{
+				"js": [{
+					"concat": {
+							"files":["browserDetect","lazyloader","jquery","ux-object","default"],
+							"output": "ux-script.js"
+						}
+					},
+					{
+					"min": {
+						"files": ["ux-script.js"],
+						"output": "ux-script.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"ux-style": {
+		"type": "standard",
+		"description": "combindes all of the different core ux-styles",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"output": "ux-style.css",
+						"min": "false"
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"output": "ux-style.min.css",
+						"min": "true"
+					}
+				}]
+			}
+		}
+	},
+	"ux-print-style": {
+		"type": "standard",
+		"description": "Combinds all print style sheet items",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"output": "ux-style.css",
+						"min": "false"
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"output": "ux-style.min.css",
+						"min": "true"
+					}
+				}]
+			}
+		}
+	},
+	"ux-core": {
+		"description": "Bundles both ux-scripts and ux-styles together",
+		"type": "combind",
+		"calls": ["ux-script", "ux-style"]
+	}
+}

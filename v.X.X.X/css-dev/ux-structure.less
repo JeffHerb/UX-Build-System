@@ -1,0 +1,635 @@
+/*
+ * Shared styles
+ */
+
+.ux-mobile-only {
+    display: none;
+}
+
+#ux-notification-container .ux-content-wrapper{
+    margin: 0;
+}
+
+#gov-banner,
+#gov-banner .ux-content,
+#ux-domain-menu,
+#ux-domain-menu nav {
+    height: 28px;
+}
+
+#ux-site-header,
+#ux-site-header a,
+#ux-site-header a:hover,
+#ux-site-header a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* Skip Navigation */
+#ux-skip-nav a,
+#ux-skip-nav a:hover,
+#ux-skip-nav a:visited {
+    height:1px;
+    left:0;
+    overflow:hidden;
+    position:absolute;
+    top:-500px;
+    width:1px
+}
+ 
+#ux-skip-nav a:active,
+#ux-skip-nav a:focus {
+    background:#000;
+    background:rgba(0,0,0,.5);
+    border-color:rgba(190,190,190,.5);
+    border-radius:5px;
+    border:2px solid #9F9F9F;
+    color: #FFF;
+    height:auto;
+    margin:4px;
+    padding:4px;
+    top:0;
+    width:auto;
+    z-index:50
+}
+
+/* 
+ * Site Search Style
+ */
+ 
+.ux-search-form > div {
+    background: #FFF;
+    border-radius: 5px;
+    float: right;
+    height: 21px;
+    margin-top: 3px;
+    width: 175px;
+}
+
+.ux-search-form .ux-search-input {
+    background:none repeat scroll 0 0 #FFF;
+    border: none;
+    display: block;
+    float: left;
+    height: 12px;
+    margin: 2px 0 0 10px;
+    padding-left: 7px;
+    width: 130px;
+}
+
+.ux-search-form .ux-search-input:focus {
+    box-shadow: none;
+}
+
+.ux-search-form .ux-search-button {
+    background: url(../images/icons/magnifier_disabled.png) no-repeat 0 0 transparent;
+    border: 0;
+    float: left;
+    height: 16px;
+    line-height:999px;
+    margin: 3px 0 0 0;
+    overflow: hidden;
+    width: 16px;
+}
+
+.ie7 .ux-search-form .ux-search-input,
+.ie8 .ux-search-form .ux-search-input {
+    padding-top: 1px;
+}
+
+
+#gov-banner,
+#ux-site-header,
+#ux-domain-menu {
+    display: inline-block;
+    float: left;
+}
+
+
+/*
+ * Govoner Banner
+ */ 
+
+#gov-banner,
+#ux-site-header,
+#ux-domain-menu {
+    width: 100%;
+}
+
+#gov-banner,
+#gov-banner .ux-content{
+    background: #036;
+}
+
+.gov-img {
+    background: url(../images/nys-banner-img.png) no-repeat 0 0 transparent;
+    display: block;
+    float: left;
+    height: 28px;
+}
+
+#gov-link1 {
+    margin-left: -4px;
+    width: 185px;
+}
+
+#gov-link2,
+#gov-link3 {
+    background-position: 0 -28px;
+    width: 144px;
+}
+
+#gov-link3 {
+    background-position: 0 -56px;
+}
+
+#gov-link3,
+#nys-search {
+    float: right;
+}
+
+/*
+ * Site Header
+ */ 
+
+ #ux-site-header,
+ #ux-site-header .ux-content {
+    background: #771C2D;
+    height: 64px;
+ }
+
+.internal #ux-site-header,
+.internal #ux-site-header .ux-content {
+    background: #416275;
+}
+
+#ux-site-logo {
+    background: url(../images/logo150x64.png) no-repeat 0 0 transparent;
+    color: #FFF;
+    display: block;
+    float: left;
+    height: 64px;
+    margin-left: -20px;
+    width: 150px;
+}
+
+#ux-site-title {
+    display: inline-block;
+    float: left;
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:20px;
+    font-weight:700;
+    padding: 20px 0 0 25px;
+    text-shadow:1px 2px 1px #000
+}
+
+
+#ux-universal-menu nav,
+#ux-header-functions {
+    float: right;
+}
+
+#ux-header-functions {
+    width: 290px;
+}
+
+#ux-universal-menu {
+    height: 12px;
+}
+
+#ux-universal-menu ul {
+    font-size: 10px;
+    list-style: none;
+    margin: 5px 0;
+}
+
+#ux-universal-menu ul li {
+    float: left;
+    margin: 3px 0 0 10px;
+}
+
+#ux-site-search{
+    margin-top: 11px;
+}
+
+#ux-gov-commish-name {
+    display: none;
+    font-size: 10px;
+    font-style: italic;
+    position: relative;
+    top: 53px;
+    left: -285px;
+}
+
+
+
+
+/*
+ * Home page logo overrides
+ */
+
+.home #ux-site-logo {
+    background: url(../images/logo330x75.png) no-repeat 0 0 transparent;
+    height: 75px;
+    width: 330px;
+    margin-left: -30px;
+}
+
+.home #ux-site-header,
+.home #ux-site-header .ux-content {
+    height: 75px;
+}
+
+.home #ux-site-title {
+    display: none;
+}
+
+.home #ux-gov-commish-name {
+    display: block;
+}
+
+.home #ux-header-functions {
+    margin-top: 7px;
+}
+
+.ie7 .home #ux-header-functions {
+    margin-top: 0;
+}
+
+
+/*
+ * Domain Menu
+ */
+
+#ux-domain-menu,
+#ux-domain-menu .ux-content {
+    background: url(../images/header-border.gif) repeat-x 0 bottom #EEE;
+    height: 28px;
+}
+
+
+#ux-domain-menu nav {
+    margin: 0;
+}
+
+.ie7 #ux-domain-menu nav {
+    z-index: 200;
+}
+
+#ux-domain-menu nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#ux-domain-menu nav > ul > li {
+    display: block;
+    float: left;
+    margin: 0;
+}
+
+#ux-domain-menu nav > ul > li > a {
+    color: #4C4C4C;
+    display: block;
+    font-weight: 700;
+    padding: 8px 13px 7px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #FFF;
+}
+
+#ux-domain-menu nav > ul > li > a:hover,
+#ux-domain-menu nav > ul > li > a:active {
+    color: #000;
+    background: #eee;
+}
+
+#ux-domain-menu nav > ul > li > div {
+    background: #FFF;
+    border: 1px solid #D3D3D3;
+    border-top: 0px;
+    box-shadow: 6px 5px 9px -9px black,
+              5px 6px 9px -9px black;
+    visibility: hidden;
+    padding: 5px;
+    position: absolute;
+    top: auto;
+    z-index: 200;
+}
+
+#ux-domain-menu nav > ul > li > div.right-menu {
+    right: 0;
+}
+
+#ux-domain-menu nav > ul > li.selected > a {
+    color: #3D6683;
+}
+
+#ux-domain-menu nav > ul > li.selected > div {
+    visibility: inherit;
+}
+
+#ux-domain-menu nav > ul > li > div ul {
+    float: left;
+    padding: 0;
+    overflow: hidden;
+    padding-top: 6px;
+}
+
+#ux-domain-menu nav > ul > li > div li {
+    display: block;
+    list-style: none;
+    margin: 0;
+}
+
+#ux-domain-menu nav > ul > li > div a {
+    display: block;
+    padding: 2px 12px 2px 22px;
+    text-decoration: none;
+}
+
+#ux-domain-menu nav > ul > li > div a.header {
+    font-weight: bold;
+    padding: 10px 0 0 12px;
+}
+
+#ux-domain-menu nav > ul > li > div ul li:first-child a.header {
+    padding-top: 5px;
+}
+
+#ux-domain-menu nav > ul > li > a.ux-domain-submenu:after {
+    content: "\25BC";
+    font-size: 7px;
+    line-height: 10px;
+    padding-left: 3px;
+    position: relative;
+    top: -1px;
+}
+
+.ie7 #ux-domain-menu nav > ul > li > a.ux-domain-submenu {
+    background: url(../images/drop.png) no-repeat scroll right 14px transparent;
+    margin-right: 3px;
+    padding-right: 10px
+}
+
+#ux-domain-menu nav > ul > li.selected {
+    margin-top: -12px;
+    height: 28px;
+}
+
+.ie7 #ux-domain-menu nav > ul > li.selected {
+    margin-top: 0;
+}
+
+#ux-domain-menu nav > ul > li.selected:before {
+    position: relative;
+    display: inline-block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #D3D3D3;
+    left: 20%;
+    top: 33px;
+    content: '\0020';
+    z-index: 200;
+}
+
+#ux-domain-menu nav > ul > li.selected:after {
+    position: relative;
+    display: inline-block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFF;
+    left: 20%;
+    top: -6px;
+    content: '\0020';
+    z-index: 200;
+}
+
+#ux-domain-menu nav > ul > li.active {
+    height: 28px;
+}
+
+#ux-domain-menu nav > ul > li.active a {
+    background: #878787;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 0px #5A5A5A;
+    color: #FFF;
+    margin-top: 4px;
+    padding: 4px 13px 3px;
+    text-shadow: 0 1px 0 #000;
+}
+
+.ie7 #ux-domain-menu nav > ul > li.active {
+    height: 28px;
+    margin-top: 0;
+}
+
+.ie7 #ux-domain-menu nav > ul > li.active a {
+    margin-top: 5px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+
+.ie7 #ux-domain-menu nav > ul > li.selected > div {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+
+
+/*
+ * Page Container
+ */
+
+#ux-page,
+#ux-page .ux-content {
+    background: #FFF;
+}
+
+#ux-page {
+    line-height: 1.6;
+    padding: 0 0 50px 0;
+}
+
+/*
+ * UX Breadcrumb
+ */
+
+#ux-breadcrumbs {
+    color:#3D6683;
+    font-size:9px;
+    line-height:1.2;
+    margin: 10px 0 0 0;
+    padding:0;
+    vertical-align:top;
+    font-family: Verdana, sans-serif;
+    font-weight: bold
+}
+
+.ie7 #ux-breadcrumbs {
+    margin-top: 7px;
+
+}
+
+#ux-breadcrumbs ul {
+    margin: 0 0 10px 12px;
+    padding: 0;
+}
+
+#ux-breadcrumbs li {
+    color:#696969;
+    float:left;
+    list-style:none;
+    padding:0
+}
+
+#ux-breadcrumbs li a {
+    background:url(../images/breadcrumb-icon.gif) no-repeat scroll right 3px transparent;
+    margin-right:3px;
+    padding-right:8px
+}
+
+#ux-breadcrumbs li a:hover {
+    color:#6491B0;
+    text-decoration:underline
+}
+
+/*
+ * Side Navigation
+ */
+
+#ux-side-nav {
+    margin: 15px 0 0 0;
+}
+
+#ux-side-nav ul {
+    list-style: none;
+    padding-left: 13px
+}
+
+#ux-side-nav li {
+    margin: 5px 0;
+    line-height: 1.2;
+    font-size: 16px
+}
+
+#ux-side-nav li li {
+    font-size: 14px
+}
+
+#ux-side-nav li li li {
+    font-size: 12px
+}
+
+#ux-side-nav a {
+    color: #4C4C4C;
+    display: block;
+    text-decoration: none;
+    padding: 3px;
+}
+
+#ux-side-nav a:hover {
+    text-decoration: underline;
+}
+
+#ux-side-nav ul ul ul a {
+    font-size: 11px;
+}
+
+#ux-side-nav .expandable-list {
+    margin-left: 0;
+}
+
+#ux-side-nav .ux-expandable {
+    background: url(../images/side-nav-left.png) no-repeat 0 center transparent;
+    padding-left: 15px;
+    margin-left: -13px
+}
+
+#ux-side-nav .ux-expandable.expanded {
+    background: url(../images/side-nav-down.png) no-repeat 0 center transparent;
+}
+
+#ux-side-nav a.ux-expandable + ul {
+    display: none;
+}
+
+#ux-side-nav a.selected {
+    color: #3D6683;
+    font-weight: 700;
+    border-left: 7px solid #CCC;
+    margin-left: -12px;
+    padding-left: 7px;
+}
+
+#ux-side-nav a.ux-expandable.expanded + ul {
+    display: block;
+}
+
+
+/*
+ * Site Footer
+ */ 
+
+footer {
+    background: url(../images/header-border.gif) repeat-x 0 top #EEE;
+    font-size: 11px;
+    min-height: 28px;
+    width: 100%;
+}
+
+footer .ux-content {
+     min-height: 28px
+}
+
+footer ul {
+    float: right;
+    list-style: none;
+    margin: 20px 0 50px 0;
+}
+
+footer ul li {
+    display: inline-block;
+    float: left;
+    padding-left: 15px;
+}
+
+footer ul li a {
+    text-decoration: none;
+}
+
+
+/*
+ * Old browser fix
+ * This is to fix IE7 and 8 because they dont understand fluid grids
+ */
+
+ .ie7.fluid .ux-content,
+ .ie8.fluid .ux-content {
+    margin: 0 auto;
+    width: 960px;
+ }
+
+
+/*
+ * Default styling for lazy load items.
+ * These stlyes are to ensure that the template does not break if a lazy load was missed.
+ */
+
+/* Popovers */
+.ux-popover + div {
+    display: none;
+}
+
+/* Fix popovers in ux-site-header */
+#ux-header-functions .ux-popover.selected::after {
+    top: 109%;
+}
+
+/* Notifications */
+#ux-notification-container {
+    display: none;
+}
+
+/* Link Icons */
+footer a.email-link img {
+    margin: -5px 3px -2px 0;
+}

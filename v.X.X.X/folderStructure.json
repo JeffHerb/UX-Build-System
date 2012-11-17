@@ -1,0 +1,22 @@
+{
+    "dev": {
+    	"js": {
+    		"src": "js-dev/",
+    		"dest": "js-dev/"
+    	},
+    	"css": {
+    		"src": "css-dev/",
+    		"dest": "css-dev/"
+    	}
+    },
+    "prod": {
+    	"js": {
+    		"src": "js-dev/",
+    		"dest": "js/"
+    	},
+    	"css": {
+    		"src": "css-dev/",
+    		"dest": "css/"
+    	}
+    }
+}
