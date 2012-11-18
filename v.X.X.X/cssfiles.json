@@ -4,6 +4,7 @@
 	"ux-grid-system":"ux-grid-system.less",
 	"ux-media-queries":"ux-media-queries.less",
 	"ux-page-contents":"ux-page-contents.less",
+	"ux-print": "ux-print.less",
 	"ux-structure":"ux-structure.less",
 	"ux-tables":"ux-tables.less",
 	"ux-utility":"ux-utility.less",

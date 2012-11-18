@@ -13,14 +13,8 @@
 			},
 			"prod":{
 				"js": [{
-					"concat": {
-							"files":["browserDetect","lazyloader","jquery","ux-object","default"],
-							"output": "ux-script.js"
-						}
-					},
-					{
 					"min": {
-						"files": ["ux-script.js"],
+						"files": ["browserDetect","lazyloader","jquery","ux-object","dev-default"],
 						"output": "ux-script.min.js"
 					}
 				}]
@@ -58,7 +52,7 @@
 			"dev": {
 				"css": [{
 					"less": {
-						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"files":["global-print","ux-print"],
 						"output": "ux-style.css",
 						"min": "false"
 					}
@@ -67,7 +61,7 @@
 			"prod": {
 				"css": [{
 					"less": {
-						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility"],
+						"files":["global-print","ux-print"],
 						"output": "ux-style.min.css",
 						"min": "true"
 					}
@@ -76,8 +70,78 @@
 		}
 	},
 	"ux-core": {
-		"description": "Bundles both ux-scripts and ux-styles together",
+		"description": "Bundles ux-scripts, ux-styles, and ux-print style sheet.",
 		"type": "combind",
-		"calls": ["ux-script", "ux-style"]
+		"calls": ["ux-script", "ux-style", "ux-print-stlye"]
+	},
+	"full-calendar": {
+		"description": "This will merge the full calendar css and override and move the js file",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["lazy-fullcalendar","lazy-fullcalendar-overrides"],
+						"output": "lazy-full-calendar.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.fullcalendar"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["lazy-fullcalendar","lazy-fullcalendar-overrides"],
+						"output": "lazy-fullcalendar.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.fullcalendar"],
+						"output": "lazy-fullcalendar.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"jquery-ui": {
+		"description": "This will merge the standard jquery css and the override",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["lazy-jquery-ui","lazy-jquery-ui-overrides"],
+						"output": "lazy-jquery-ui.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery-ui-accordion","lazy-jquery-ui-autocomplete","lazy-jquery-ui-button","lazy-jquery-ui-core","lazy-jquery-ui-datepicker","lazy-jquery-ui-dialog","lazy-jquery-ui-progressbar","lazy-jquery-ui-slider","lazy-jquery-ui-tabs"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["lazy-jquery-ui","lazy-jquery-ui-overrides"],
+						"output": "lazy-jquery-ui.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery-ui-accordion","lazy-jquery-ui-autocomplete","lazy-jquery-ui-button","lazy-jquery-ui-core","lazy-jquery-ui-datepicker","lazy-jquery-ui-dialog","lazy-jquery-ui-progressbar","lazy-jquery-ui-slider","lazy-jquery-ui-tabs"],
+						"output": ["lazy-jquery-ui-accordion.min.js","lazy-jquery-ui-autocomplete.min.js","lazy-jquery-ui-button.min.js","lazy-jquery-ui-core.min.js","lazy-jquery-ui-datepicker.min.js","lazy-jquery-ui-dialog.min.js","lazy-jquery-ui-progressbar.min.js","lazy-jquery-ui-slider.min.js","lazy-jquery-ui-tabs.min.js"]
+					}
+				}]
+			}
+		}
 	}
 }

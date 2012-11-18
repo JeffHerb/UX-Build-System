@@ -337,6 +337,7 @@ h4 .ux-header-subtitle {
 h5 .ux-header-subtitle {
   font-size: 0.95em;
 }
+
 /*
 	This is a mixed grid system style sheet made specifically to allow for a
 	simple toggle between either fluid or flex grid system. The grid systems
@@ -1606,7 +1607,8 @@ p:after,
   right: auto!important;
   top: auto !important;
 }
-/* ============================= *//*
+/* ============================= */
+/*
  * Shared styles
  */
 .ux-mobile-only {
@@ -2118,6 +2120,7 @@ footer ul li a {
 footer a.email-link img {
   margin: -5px 3px -2px 0;
 }
+
 /**************
 **  DOL Containers
 ***************/
@@ -4926,6 +4929,7 @@ div.ux-selection-component,
 .ux-wiz li.reached {
   border-bottom: 3px solid #3D6683;
 }
+
 /*
  * Filename: ux-tables.css
  * Description: Purupose of this file is to serve as a repository for all 
@@ -5232,6 +5236,7 @@ li.ux-jQDT-row-expandable a img {
   display: inline !important;
   margin: 3px 4px 0 0 !important;
 }
+
 @media handheld, only screen and (min-width: 200px) and (max-width: 599px) {
   /* Shared Header Classes
   	-------------------------- */
@@ -5521,6 +5526,7 @@ li.ux-jQDT-row-expandable a img {
     width: 1200px !important;
   }
 }
+
 /**************
 **  UX Utility classes
 ***************/

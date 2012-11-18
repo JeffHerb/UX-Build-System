@@ -7,12 +7,6 @@ module.exports = function(grunt) {
       jsFiles = grunt.file.readJSON('jsfiles.json'),
       cssFiles = grunt.file.readJSON('cssfiles.json');
 
-  // Build System Properties
-  var bProps = {
-    files: [],
-    folders: []
-  }
-
   // Build System Dynamic Functions
   var bFuncs = {
 
@@ -59,38 +53,64 @@ module.exports = function(grunt) {
     min: function(taskName, src, dest, funcProps) {
 
       // Storage array for newly generated tasks
-      var newTasks = [],
-      taskObj = {
+      var taskObj = {
         src: [],
-        dest: dest + funcProps.output,
+        dest: "",
         taskName: taskName
-      };
+      },
+      tasks = [];
 
-      // Check to see if the file list is an array or string and act accordingly
-      if (typeof(funcProps.file) == "string") {
+      if (typeof(funcProps.output) == "string") {
 
-        // Add the source item to the array
-        taskObj.src.push(dest + jsFiles[funcProps.file]);
+        // Add all the source items to the array
+        for (file in funcProps.files) {
+
+          taskObj.src.push(src + jsFiles[funcProps.files[file]]);
+
+        }
+
+        // Get the destination
+        taskObj.dest = dest + funcProps.output,
+
+        // Add min to the config
+        grunt.config('min.' + taskName, {
+            src: taskObj.src,
+            dest: taskObj.dest
+        });
+
+        // Return the finished task that name that was just defined to add to our task object.
+        return ('min:' + taskObj.taskName);
 
       } else {
 
-        // Must be an array of strings
         for (file in funcProps.files) {
 
-          // Add all the source items to the array
-          taskObj.src.push(dest + funcProps.files[file]);
+          // Clear out old aray value
+          taskObj.src = [];
+
+          // Setup the current source and destination 
+          taskObj.src.push(src + jsFiles[funcProps.files[file]]);
+          taskObj.dest = dest + funcProps.output[file];
+          //grunt.log.writeln(file);
+
+          // Add min to the config
+          grunt.config('min.' + taskObj.taskName + "-" + funcProps.files[file], {
+              src: taskObj.src,
+              dest: taskObj.dest
+          });
+
+        // Return the finished task that name that was just defined to add to our task object.
+        tasks.push('min:' + taskObj.taskName + "-" + funcProps.files[file]);
+
         }
 
+        grunt.log.writeln(tasks);
+
+        // Send all of the different array values back
+        return (tasks);
+
+
       }
-
-      // Add min to the config
-      grunt.config('min.' + taskName, {
-          src: taskObj.src,
-          dest: taskObj.dest
-      });
-
-      // Return the finished task that name that was just defined to add to our task object.
-      return ('min:' + taskObj.taskName);
 
     },
 
@@ -98,18 +118,16 @@ module.exports = function(grunt) {
     less: function(taskName, src, dest, funcProps) {
 
       // Storage array for newly generated tasks
-      var newTasks = [],
-      taskObj = {
+      var taskObj = {
         src: [],
         dest: dest + funcProps.output,
         taskName: taskName
       };
 
-
       // Must be an array of strings
       for (file in funcProps.files) {
+        
         // Add all the source items to the array
-        //filesrc += src + funcProps.files[file];
         taskObj.src.push(src + cssFiles[funcProps.files[file]]);
       }
 
@@ -140,6 +158,42 @@ module.exports = function(grunt) {
 
       // Return the finished task that name that was just defined to add to our task object.
       return ('less:' + taskName);
+
+    },
+
+    // Copy files from one folder to another.
+    copy: function(taskName, src, dest, funcProps) {
+
+      // Storage array for newly generated tasks
+      var taskObj = {
+        src: "",
+        dest: "",
+        taskName: taskName
+      };
+
+      // Create the initual copy object.
+      var copyObj = {
+        files: {}
+      };
+
+      // Loop through and add the copy properties in accordingly.
+      for (file in funcProps.files) {
+
+        // Add the src item to the src property
+        taskObj.src = (src + jsFiles[funcProps.files[file]]);
+
+        // Add the dest item to the dest property.
+        taskObj.dest = (dest + jsFiles[funcProps.files[file]]);
+
+        // Create the task object
+        copyObj.files[taskObj.dest] = taskObj.src;
+
+      }
+
+      grunt.config('copy.' + taskObj.taskName, copyObj);
+
+      // Return the finished task that name that was just defined to add to our task object.
+      return ('copy:' + taskObj.taskName);
 
     }
 
@@ -177,8 +231,7 @@ module.exports = function(grunt) {
 
             // Loop through all of the sub-bundles and execute them in the order they are declared.
             for (call in prodBundles[argument].calls) {
-              //grunt.log.writeln(prodBundles[argument].calls[call]);
-              
+      
               //subTask = prodBundles[argument].calls[call];
               taskName = prodBundles[argument].calls[call];
               bundle = prodBundles[taskName];
@@ -211,11 +264,11 @@ module.exports = function(grunt) {
         // Combind bundles are simply a set of standard bundles, all that need to be called.
         case "combind":
 
+          // Task array
           var origTask = taskName;
 
           // Loop through all of the sub-bundles and execute them in the order they are declared.
           for (call in prodBundles[origTask].calls) {
-            //grunt.log.writeln(prodBundles[argument].calls[call]);
             
             //subTask = prodBundles[argument].calls[call];
             taskName = prodBundles[origTask].calls[call];
@@ -248,31 +301,34 @@ module.exports = function(grunt) {
 
       // Loop will go through all of the function objects
       for (func in functions) {
-        //grunt.log.writeln(func + " = " + functions[func]);
 
+        // Save off the action number
         var actions = functions[func];
 
         // Loop through all of the individual functions
         for (action in actions) {
 
-          // Call the functions and pass the data
-          //grunt.log.writeln(action + " = " + actions[action]);
-
+          // Execute the actions based on the action name.
           switch(action) {
 
-            // We are concating, so we need to pass the dest and src with the list of tiles to be concatinated.
+            // We are concating files
             case "concat":
-              
-              //grunt.log.writeln('We have a concat');
               tasks.push(bFuncs.concat(taskName, fStructure[mode][type].src, fStructure[mode][type].dest, actions[action]));
               break;
 
+            // We are minifiying JavaScript
             case "min":
-              tasks.push(bFuncs.min(taskName, fStructure[mode][type].src, fStructure[mode][type].dest, actions[action]));
+              tasks = tasks.concat(bFuncs.min(taskName, fStructure[mode][type].src, fStructure[mode][type].dest, actions[action]));
               break;
 
+            // Wa are compiling less, possible minifiying
             case "less":
               tasks.push(bFuncs.less(taskName, fStructure[mode][type].src, fStructure[mode][type].dest, actions[action]));
+              break;
+
+            // We are copying files
+            case "copy":
+              tasks.push(bFuncs.copy(taskName, fStructure[mode][type].src, fStructure[mode][type].dest, actions[action]));
               break;
 
           }
@@ -283,14 +339,14 @@ module.exports = function(grunt) {
 
     } // End all of the looping!
 
-
     // Execute all tasks
     grunt.task.run(tasks);
 
   }
 
-  // Adds less module for grunt
+  // Adds module for grunt
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Project configuration.
   grunt.initConfig({
