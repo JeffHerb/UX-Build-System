@@ -242,6 +242,31 @@ module.exports = function(grunt) {
             }
 
               break;
+
+          case "mixed":
+
+            var origTask = argument;
+
+            // Loop through all of the sub-bundles and execute them in the order they are declared.
+            
+            for (call in prodBundles[argument].calls) {
+              
+              taskName = prodBundles[argument].calls[call];
+              bundle = prodBundles[taskName];
+
+              // Execute this task
+              taskExecuter(taskName, mode, bundle);
+
+            }
+            
+
+            // Build the original called item now that dependencies have been reached
+            bundle = prodBundles[argument];
+
+            // Execute this task
+            taskExecuter(origTask, mode, bundle);
+
+              break;
         }
 
       } 
@@ -270,7 +295,6 @@ module.exports = function(grunt) {
           // Loop through all of the sub-bundles and execute them in the order they are declared.
           for (call in prodBundles[origTask].calls) {
             
-            //subTask = prodBundles[argument].calls[call];
             taskName = prodBundles[origTask].calls[call];
             bundle = prodBundles[taskName];
 
@@ -278,6 +302,30 @@ module.exports = function(grunt) {
             taskExecuter(taskName, mode, bundle);
 
           }
+
+            break;
+
+        case "mixed":
+
+          // Task array
+          var origTask = taskName;
+
+          // Loop through all of the sub-bundles and execute them in the order they are declared.
+          for (call in prodBundles[origTask].calls) {
+            
+            taskName = prodBundles[origTask].calls[call];
+            bundle = prodBundles[taskName];
+
+            // Execute this task
+            taskExecuter(taskName, mode, bundle);
+
+          }
+
+          // Build the original called item now that dependencies have been reached
+          bundle = prodBundles[origTask];
+
+          // Execute this task
+          taskExecuter(taskName, mode, bundle);
 
             break;
       }

@@ -81,8 +81,8 @@
 			"dev": {
 				"css": [{
 					"less": {
-						"files": ["lazy-fullcalendar","lazy-fullcalendar-overrides"],
-						"output": "lazy-full-calendar.css",
+						"files": ["global","lazy-jquery.fullcalendar","lazy-jquery.fullcalendar-overrides"],
+						"output": "lazy-jquery.fullcalendar.css",
 						"min":"false"
 					}
 				}],
@@ -95,15 +95,15 @@
 			"prod": {
 				"css": [{
 					"less": {
-						"files": ["lazy-fullcalendar","lazy-fullcalendar-overrides"],
-						"output": "lazy-fullcalendar.css",
+						"files": ["global","lazy-jquery.fullcalendar","lazy-jquery.fullcalendar-overrides"],
+						"output": "lazy-jquery.fullcalendar.min.css",
 						"min":"true"
 					}
 				}],
 				"js": [{
 					"min": {
 						"files": ["lazy-jquery.fullcalendar"],
-						"output": "lazy-fullcalendar.min.js"
+						"output": "lazy-jquery.fullcalendar.min.js"
 					}
 				}]
 			}
@@ -116,7 +116,7 @@
 			"dev": {
 				"css": [{
 					"less": {
-						"files": ["lazy-jquery-ui","lazy-jquery-ui-overrides"],
+						"files": ["global","lazy-jquery-ui","lazy-jquery-ui-overrides"],
 						"output": "lazy-jquery-ui.css",
 						"min":"false"
 					}
@@ -130,7 +130,7 @@
 			"prod": {
 				"css": [{
 					"less": {
-						"files": ["lazy-jquery-ui","lazy-jquery-ui-overrides"],
+						"files": ["global","lazy-jquery-ui","lazy-jquery-ui-overrides"],
 						"output": "lazy-jquery-ui.css",
 						"min":"true"
 					}
@@ -139,6 +139,641 @@
 					"min": {
 						"files": ["lazy-jquery-ui-accordion","lazy-jquery-ui-autocomplete","lazy-jquery-ui-button","lazy-jquery-ui-core","lazy-jquery-ui-datepicker","lazy-jquery-ui-dialog","lazy-jquery-ui-progressbar","lazy-jquery-ui-slider","lazy-jquery-ui-tabs"],
 						"output": ["lazy-jquery-ui-accordion.min.js","lazy-jquery-ui-autocomplete.min.js","lazy-jquery-ui-button.min.js","lazy-jquery-ui-core.min.js","lazy-jquery-ui-datepicker.min.js","lazy-jquery-ui-dialog.min.js","lazy-jquery-ui-progressbar.min.js","lazy-jquery-ui-slider.min.js","lazy-jquery-ui-tabs.min.js"]
+					}
+				}]
+			}
+		}
+	},
+	"chosen": {
+		"description": "This will merge the chosen css files together an minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.chosen","lazy-jquery.chosen-overrides"],
+						"output": "lazy-jquery.chosen.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.chosen"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.chosen","lazy-jquery.chosen-overrides"],
+						"output": "lazy-jquery.chosen.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.chosen"],
+						"output": "lazy-jquery.chosen.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"page-feedback": {
+		"description": "This will merge the page-feedback css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.page-feedback"],
+						"output": "lazy-jquery.page-feedback.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.page-feedback"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.page-feedback"],
+						"output": "lazy-jquery.page-feedback.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.page-feedback"],
+						"output": "lazy-jquery.page-feedback.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"cookie": {
+		"description": "This will minify the cookie javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.cookie"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.cookie"],
+						"output": "lazy-jquery.cookie.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"apps": {
+		"description": "This will compile the standard ux-core and add the apps (JSF) specific css and javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility","apps-defaults"],
+						"output": "apps.css",
+						"min": "false"
+					}
+				}],
+				"js": [{
+					"concat": {
+						"files":["browserDetect","lazyloader","jquery","ux-object","dev-default","app-default"],
+						"output": "apps.js"
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files":["global","ux-defaults","ux-grid-system","ux-structure","ux-page-contents","ux-tables","ux-media-queries","ux-utility","apps-defaults"],
+						"output": "apps.min.css",
+						"min": "true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["browserDetect","lazyloader","jquery","ux-object","dev-default","app-default"],
+						"output": "apps.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"dataTables": {
+		"description": "This will minify the data tables javascript. Runs all of the jquery ui items as well as they are dependent.",
+		"type": "mixed",
+		"calls": ["jquery-ui"],
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.dataTables"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.dataTables"],
+						"output": "lazy-jquery.dataTables.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"dynaTree": {
+		"description": "This will merge the dynaTree css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.dynatree"],
+						"output": "lazy-jquery.dynatree.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.dynatree"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.dynatree"],
+						"output": "lazy-jquery.dynatree.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.dynatree"],
+						"output": "lazy-jquery.dynatree.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"expander": {
+		"description": "This will merge the expander css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.expander"],
+						"output": "lazy-jquery.expander.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.expander"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.expander"],
+						"output": "lazy-jquery.expander.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.expander"],
+						"output": "lazy-jquery.expander.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"joyride": {
+		"description": "This will merge the joyride css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.joyride"],
+						"output": "lazy-jquery.joyride.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.joyride"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.joyride"],
+						"output": "lazy-jquery.joyride.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.joyride"],
+						"output": "lazy-jquery.joyride.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"character-counter": {
+		"description": "This will merge the character counter css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.character-counter"],
+						"output": "lazy-jquery.open-ux.character-counter.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.character-counter"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.character-counter"],
+						"output": "lazy-jquery.open-ux.character-counter.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.character-counter"],
+						"output": "lazy-jquery.open-ux.character-counter.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"keyboard-shortcuts": {
+		"description": "This will merge the keyboard shortcuts css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.keyboard-shortcuts"],
+						"output": "lazy-jquery.open-ux.keyboard-shortcuts.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.keyboard-shortcuts"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.keyboard-shortcuts"],
+						"output": "lazy-jquery.open-ux.keyboard-shortcuts.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.keyboard-shortcuts"],
+						"output": "lazy-jquery.open-ux.keyboard-shortcuts.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"ux-menus": {
+		"description": "This will minify the mega-menu javascript used by standard ux-templates",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.menus"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.menus"],
+						"output": "lazy-jquery.open-ux.menus.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"modal-loader": {
+		"description": "This will minify the modal loader javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.modal-loader"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.modal-loader"],
+						"output": "lazy-jquery.open-ux.modal-loader.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"navigational-warning": {
+		"description": "This will merge the navigational warning css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.navigational-warning"],
+						"output": "lazy-jquery.open-ux.navigational-warning.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.navigational-warning"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.navigational-warning"],
+						"output": "lazy-jquery.open-ux.navigational-warning.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.navigational-warning"],
+						"output": "lazy-jquery.open-ux.navigational-warning.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"popovers": {
+		"description": "This will merge the popovers css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.popovers"],
+						"output": "lazy-jquery.open-ux.popovers.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.popovers"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.open-ux.popovers"],
+						"output": "lazy-jquery.open-ux.popovers.min.css",
+						"min":"true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.popovers"],
+						"output": "lazy-jquery.open-ux.popovers.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"show-hide-password": {
+		"description": "This will minify the show hide password javascript.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.open-ux.show-hide-password"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.open-ux.show-hide-password"],
+						"output": "lazy-jquery.open-ux.show-hide-password.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"validation": {
+		"description": "This will merge the validation css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.validationEngine","lazy-jquery.validationEngine-overrides"],
+						"output": "lazy-jquery.validationEngine.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery-validationEngine-en","lazy-jquery-validationEngine"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.validationEngine","lazy-jquery.validationEngine-overrides"],
+						"output": "lazy-jquery.validationEngine.min.css",
+						"min": "true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery-validationEngine-en","lazy-jquery-validationEngine"],
+						"output": ["lazy-jquery-validationEngine-en.min.js","lazy-jquery-validationEngine.min.js"]
+					}
+				}]
+			}
+		}
+	},
+	"qtips": {
+		"description": "This will merge the qtips css files together and minifiy its javascript",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.qtip"],
+						"output": "lazy-jquery.qtip.css",
+						"min":"false"
+					}
+				}],
+				"js": [{
+					"copy": {
+						"files": ["lazy-jquery.qtip"]
+					}
+				}]
+			},
+			"prod": {
+				"css": [{
+					"less": {
+						"files": ["global","lazy-jquery.qtip"],
+						"output": "lazy-jquery.qtip.min.css",
+						"min": "true"
+					}
+				}],
+				"js": [{
+					"min": {
+						"files": ["lazy-jquery.qtip"],
+						"output": "lazy-jquery.qtip.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"json2": {
+		"description": "This will minify the JSON2 javascript.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-json2"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-json2"],
+						"output": "lazy-json2.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"sugar": {
+		"description": "This will minify the sugar javascript lib.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-sugar"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-sugar"],
+						"output": "lazy-sugar.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"swfobject": {
+		"description": "This will minify the swfobject javascript lib.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-swfobject"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["lazy-swfobject"],
+						"output": "lazy-swfobject.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"video": {
+		"description": "This will minify the video javascript lib.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["lazy-video","video-js"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"copy": {
+						"files": ["video-js"]
+					},
+					"min": {
+						"files": ["lazy-video"],
+						"output": "lazy-video.min.js"
+					}
+				}]
+			}
+		}
+	},
+	"modernizr": {
+		"description": "This will minify the modernizr javascript lib.",
+		"type": "standard",
+		"mode": {
+			"dev": {
+				"js": [{
+					"copy": {
+						"files": ["modernizr"]
+					}
+				}]
+			},
+			"prod": {
+				"js": [{
+					"min": {
+						"files": ["modernizr"],
+						"output": "modernizr.min.js"
 					}
 				}]
 			}
