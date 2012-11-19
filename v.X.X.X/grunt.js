@@ -91,7 +91,6 @@ module.exports = function(grunt) {
           // Setup the current source and destination 
           taskObj.src.push(src + jsFiles[funcProps.files[file]]);
           taskObj.dest = dest + funcProps.output[file];
-          //grunt.log.writeln(file);
 
           // Add min to the config
           grunt.config('min.' + taskObj.taskName + "-" + funcProps.files[file], {
@@ -103,8 +102,6 @@ module.exports = function(grunt) {
         tasks.push('min:' + taskObj.taskName + "-" + funcProps.files[file]);
 
         }
-
-        grunt.log.writeln(tasks);
 
         // Send all of the different array values back
         return (tasks);
@@ -445,6 +442,30 @@ module.exports = function(grunt) {
         //grunt.log.writeln(arguments[arg]);
         buildProcessor('prod', arguments[arg]);
       }
+
+    }
+
+  });
+
+  // Help Definition
+  grunt.registerTask('help', 'Execute help (command list) build', function(){
+
+    grunt.log.writeln('Enter the command "grunt" will preform the development build.');
+    grunt.log.writeln(''); // Blank line
+    grunt.log.writeln('To define a production build enter the command "grunt prod.'); 
+    grunt.log.writeln('');
+    grunt.log.writeln('To execute a particular sub task, enter the command "grunt mode:command"');
+    grunt.log.writeln('"mode refers to either dev or prod. "command"');
+    grunt.log.writeln('"command" refers to one of the following task:');
+    grunt.log.writeln(''); // Blank line
+    grunt.log.writeln(''); // Blank line
+
+
+    for (task in prodBundles) {
+
+      grunt.log.writeln('Command:     ' + task);
+      grunt.log.writeln('Description: ' + prodBundles[task].description);
+      grunt.log.writeln(''); // Blank line
 
     }
 
