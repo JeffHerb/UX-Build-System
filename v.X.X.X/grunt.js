@@ -333,6 +333,15 @@ module.exports = function(grunt) {
 
   function taskExecuter(taskName, mode, bundle) {
 
+    grunt.log.writeln(taskName + " " + mode);
+
+
+    if (bundle.hasOwnProperty('mode')) {
+      grunt.log.writeln('has mode');
+    } else {
+      grunt.log.writeln('missing mode');
+    }
+
     var tasks = [];
 
     // Pull the asset types we are going to manipulate in this mode.

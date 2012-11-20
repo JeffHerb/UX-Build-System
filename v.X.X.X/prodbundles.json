@@ -72,7 +72,7 @@
 	"ux-core": {
 		"description": "Bundles ux-scripts, ux-styles, and ux-print style sheet.",
 		"type": "combind",
-		"calls": ["ux-script", "ux-style", "ux-print-stlye"]
+		"calls": ["ux-script", "ux-style", "ux-print-style"]
 	},
 	"full-calendar": {
 		"description": "This will merge the full calendar css and override and move the js file",
